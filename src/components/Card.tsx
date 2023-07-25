@@ -10,12 +10,12 @@ export const Card: FC<CardProps> = ({ secrets }): ReactElement => {
   return (
     <article
       className={`flex flex-col gap-4 rounded-3 py-4 w-2xl ${
-        secrets.genre === 'man' ? 'bg-[#3C8CD4]' : 'bg-[#f2508f]'
+        secrets.gender === 'man' ? 'bg-[#3C8CD4]' : 'bg-[#f2508f]'
       } m-auto px-16 text-black relative mb-8`}
     >
       <div className='flex justify-between'>
         <div className='flex justify-start items-center'>
-          {secrets.genre === 'man' ? (
+          {secrets.gender === 'man' ? (
             <Icon icon='material-symbols:man' className='text-5 text-black' />
           ) : (
             <Icon icon='material-symbols:woman' className='text-5 text-black' />
@@ -24,7 +24,7 @@ export const Card: FC<CardProps> = ({ secrets }): ReactElement => {
             <span className='font-600'>{secrets.age}</span> years
           </p>
         </div>
-        <p>#{secrets.id}</p>
+        <p>#{secrets._id}</p>
       </div>
       <p>{secrets.secret}</p>
       <div className='flex justify-between items-center'>
@@ -42,11 +42,11 @@ export const Card: FC<CardProps> = ({ secrets }): ReactElement => {
       </div>
       <div className='absolute [transform:translate(-50%,-50%)] top-50% left-8 flex flex-col'>
         <Icon icon='ri:emotion-unhappy-line' className='text-6 text-black' />
-        <p className='text-black'>{secrets.dislikes}</p>
+        <p className='text-black text-center'>{secrets.dislikes}</p>
       </div>
       <div className='absolute [transform:translate(-50%,-50%)] top-50% right-2 flex flex-col'>
-        <Icon icon='ri:emotion-happy-line' className=' text-6 text-black' />
-        <p className='text-black'>{secrets.likes}</p>
+        <Icon icon='ri:emotion-happy-line' className='text-6 text-black' />
+        <p className='text-black text-center'>{secrets.likes}</p>
       </div>
     </article>
   )
