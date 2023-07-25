@@ -1,6 +1,6 @@
 export interface Secrets {
-  id: number
-  genre: string
+  _id: number
+  gender: string
   age: number
   secret: string
   tags: string[]
