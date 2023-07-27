@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 const url = import.meta.env.VITE_API_URL
 
@@ -19,5 +19,5 @@ export const useFetch = <T>() => {
     getSecrets()
   }, [getSecrets])
 
-  return { data }
+  return { data, setData }
 }

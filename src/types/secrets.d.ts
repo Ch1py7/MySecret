@@ -1,5 +1,5 @@
 export interface Secrets {
-  _id: number
+  _id: string
   gender: string
   age: number
   secret: string
