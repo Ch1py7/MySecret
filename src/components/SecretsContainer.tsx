@@ -1,14 +1,24 @@
+import { Icon } from '@iconify/react'
 import { useFetch } from 'hooks'
 import { FC, ReactElement, useCallback, useState } from 'react'
 import { secretsService } from 'services'
 import { Secrets } from 'types/secrets'
 import { Card } from './Card'
 import { Loader } from './Loader'
-import { Icon } from '@iconify/react'
 
-export const SecretsContainer: FC = (): ReactElement => {
+interface SecretsContainerProps {
+  tagFilter: string
+  ageFilter: string
+}
+
+export const SecretsContainer: FC<SecretsContainerProps> = ({
+  tagFilter,
+  ageFilter,
+}): ReactElement => {
   const [current, setCurrent] = useState<number>(1)
-  const { data: secrets, setData } = useFetch<Secrets[]>(`api/secrets?page=${current}&pageSize=10`)
+  const { data: secrets, setData } = useFetch<Secrets[]>(
+    `api/secrets?page=${current}&pageSize=10&tagFilter=${tagFilter}&ageFilter=${ageFilter}`
+  )
   const { data: allSecrets } = useFetch<Secrets[]>('api/allsecrets')
   const [loader, setLoader] = useState<boolean>(false)
 
@@ -74,28 +84,40 @@ export const SecretsContainer: FC = (): ReactElement => {
   }
 
   return (
-    <section className={`${secrets ? null : 'flex flex-col justify-center items-center'} bg-[#141113] min-h-[calc(100vh-70px)] py-6`}>
+    <section
+      className={`${
+        secrets ? null : 'flex flex-col justify-center items-center'
+      } bg-[#141113] min-h-[calc(100vh-70px)] py-6`}
+    >
       {secrets ? (
         <>
           {secrets.map((secret, index) => (
-            <Card key={index} secret={secret} likeFn={likeFn} dislikeFn={dislikeFn} loader={loader} />
+            <Card
+              key={index}
+              secret={secret}
+              likeFn={likeFn}
+              dislikeFn={dislikeFn}
+              loader={loader}
+            />
           ))}
           <div className='flex justify-around w-2xl m-auto'>
             <button
-              className='flex justify-center items-center h-[2rem] w-[12rem] border-none bg-[#f2508f] rounded-md'
+              className='flex justify-center items-center h-[em] w-[1em] border-none bg-[#f2508f] rounded-md'
               onClick={handlePrev}
             >
               <Icon icon='ep:arrow-left-bold' fontSize={24} />
             </button>
             <button
-              className='flex justify-center items-center h-[2rem] w-[12rem] border-none bg-[#3C8CD4] rounded-md'
+              className='flex justify-center items-center h-[em] w-[1em] border-none bg-[#3C8CD4] rounded-md'
               onClick={handleNext}
             >
               <Icon icon='ep:arrow-right-bold' fontSize={24} />
             </button>
           </div>
         </>
-      ) : <Loader />}
+      ) : (
+        <Loader />
+      )}
     </section>
   )
 }
