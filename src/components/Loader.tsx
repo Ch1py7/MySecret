@@ -1,6 +1,6 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactElement } from 'react'
 
-export const Loader: FC = (): ReactNode => {
+export const Loader: FC = (): ReactElement => {
   return (
     <div className='flex items-center'>
       <span className='inline-block w-[5px] h-[30px] bg-[#ffffff7f rounded-[10] animate-scale-up' />
