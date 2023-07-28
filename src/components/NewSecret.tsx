@@ -7,6 +7,7 @@ interface NewSecretProps {
 }
 
 const url = `${import.meta.env.VITE_API_URL}api/insert`
+const regex = /^(?:[a-zA-Z0-9]{1,7}(?:,|$)){1,3}$/
 
 export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement => {
   const [state, dispatch] = useReducer(formReducer, initialState)
@@ -32,6 +33,8 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
       dispatch({ type: 'reset' })
     } catch (error) {
       console.error(error)
+    } finally {
+      location.reload()
     }
   }
 
@@ -58,7 +61,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
           <p className='inline'>I am </p>
           <input
             required
-            className='h-[1.4rem] rounded-md border-none px-1 bg-[#333333] text-[#F5F3F4]'
+            className='input'
             max={99}
             min={12}
             type='number'
@@ -68,7 +71,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
           <p className='inline'> years old and I am a </p>
           <select
             required
-            className='h-[1.4rem] rounded-md border-none bg-[#333333] text-[#F5F3F4]'
+            className='input'
             onChange={(e) => dispatch({ type: 'setField', field: 'gender', value: e.target.value })}
           >
             <option defaultValue='gender' className='hidden'>
@@ -86,19 +89,15 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
         />
         <div className='flex justify-between border-none'>
           <input
+            pattern={regex.source}
             maxLength={35}
             onChange={(e) =>
               dispatch({ type: 'setField', field: 'tags', value: e.target.value.split(',') })
             }
             className='bg-[#181818] text-[#F5F3F4] px-4 rounded-1 border-none w-70 py-2'
-            placeholder='tags (separated by commas and max 5)'
+            placeholder='tags (separated by commas and max 3)'
           />
           <button
-            onClick={() =>
-              setTimeout(() => {
-                location.reload()
-              }, 2000)
-            }
             type='submit'
             className='flex justify-center items-center border-none rounded-md w-[4em] bg-[#d1d1d1] hover:bg-[#F5F3F4]'
           >
