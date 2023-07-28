@@ -18,7 +18,7 @@ export const SecretsContainer: FC = (): ReactElement => {
 
   const handlePrev = useCallback(() => {
     if (!allSecrets) return
-    setCurrent((prev) => (prev === 0 ? allSecrets?.length / allSecrets?.length + 1 : prev + 1))
+    setCurrent((prev) => (prev === 0 ? allSecrets?.length / allSecrets?.length + 1 : prev - 1))
   }, [allSecrets])
 
   // TODO: Refactor these functions to be more DRY
