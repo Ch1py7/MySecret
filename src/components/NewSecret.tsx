@@ -43,12 +43,16 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
       >
         <div className='flex pb-2 justify-between items-center pr-2 border-1 border-b-[#F5F3F4] border-b-solid'>
           <p className='text-3xl'>What secret would you tell us? 💡</p>
-          <Icon
+          <button
+            className='border-none bg-transparent'
             onClick={() => setSecretWindow((prev) => !prev)}
-            icon='ph:x-bold'
-            color='red'
-            fontSize={24}
-          />
+          >
+            <Icon
+              icon='ph:x-bold'
+              color='red'
+              fontSize={32}
+            />
+          </button>
         </div>
         <div className='font-600 pt-4 border-1 pb-4 border-b-[#F5F3F4] border-b-solid'>
           <p className='inline'>I am </p>
