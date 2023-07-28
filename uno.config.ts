@@ -3,6 +3,9 @@ import { defineConfig, presetUno } from 'unocss'
 
 export default defineConfig({
   presets: [presetUno()],
+  shortcuts: {
+    'input': 'h-[1.4em] rounded-md border-none px-1 bg-[#333333] text-[#F5F3F4]'
+  },
   theme: {
     animation: {
       keyframes: {
