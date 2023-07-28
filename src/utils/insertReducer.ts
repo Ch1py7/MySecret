@@ -1,3 +1,5 @@
+// TODO: refactor to use useState instead of useReducer
+
 interface FormState {
   age: number
   tags: string[]
