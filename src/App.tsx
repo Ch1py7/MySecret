@@ -7,7 +7,7 @@ export const App: FC = (): ReactElement => {
   const [secretWindow, setSecretWindow] = useState<boolean>(false)
 
   return (
-    <div className=''>
+    <div>
       <Header setSecretWindow={setSecretWindow} />
       <SecretsContainer />
       {secretWindow && <NewSecret setSecretWindow={setSecretWindow} />}
