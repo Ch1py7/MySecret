@@ -42,7 +42,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
         className='w-xl bg-[#0B090A] h-[21.4em] rounded-xl text-[#F5F3F4] p-5'
       >
         <div className='flex pb-2 justify-between items-center pr-2 border-1 border-b-[#F5F3F4] border-b-solid'>
-          <p className='text-3xl'>What secret would you tell us?</p>
+          <p className='text-3xl'>What secret would you tell us? 💡</p>
           <Icon
             onClick={() => setSecretWindow((prev) => !prev)}
             icon='ph:x-bold'
@@ -54,7 +54,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
           <p className='inline'>I am </p>
           <input
             required
-            className='w-7 rounded-md border-none text-center'
+            className='h-[1.4rem] rounded-md border-none px-1 bg-[#333333] text-[#F5F3F4]'
             max={99}
             min={12}
             type='number'
@@ -64,7 +64,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
           <p className='inline'> years old and I am a </p>
           <select
             required
-            className='rounded-md border-none'
+            className='h-[1.4rem] rounded-md border-none bg-[#333333] text-[#F5F3F4]'
             onChange={(e) => dispatch({ type: 'setField', field: 'gender', value: e.target.value })}
           >
             <option defaultValue='gender' className='hidden'>
@@ -96,9 +96,9 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
               }, 2000)
             }
             type='submit'
-            className='border-none rounded-md px-2 py-1 bg-[#8b8b8b] mt-1'
+            className='flex justify-center items-center border-none rounded-md w-[4em] bg-[#d1d1d1] hover:bg-[#F5F3F4]'
           >
-            Send
+            <Icon icon='tabler:send' fontSize={24}  />
           </button>
         </div>
       </form>
