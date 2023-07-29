@@ -102,13 +102,13 @@ export const SecretsContainer: FC<SecretsContainerProps> = ({
           ))}
           <div className='flex justify-around w-2xl m-auto'>
             <button
-              className='flex justify-center items-center h-[em] w-[1em] border-none bg-[#f2508f] rounded-md'
+              className='flex justify-center items-center h-[3em] w-[12em] border-none bg-[#f2508f] rounded-md'
               onClick={handlePrev}
             >
               <Icon icon='ep:arrow-left-bold' fontSize={24} />
             </button>
             <button
-              className='flex justify-center items-center h-[em] w-[1em] border-none bg-[#3C8CD4] rounded-md'
+              className='flex justify-center items-center h-[3em] w-[12em] border-none bg-[#3C8CD4] rounded-md'
               onClick={handleNext}
             >
               <Icon icon='ep:arrow-right-bold' fontSize={24} />
