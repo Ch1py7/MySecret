@@ -42,6 +42,7 @@ export const Filter: FC<FilterProps> = ({
               className='input w-[20em]'
               type='text'
               placeholder='Tag'
+              value={tagFilter}
               onChange={(e) => setTagFilter(e.target.value.split(','))}
             />
           </div>
@@ -51,7 +52,14 @@ export const Filter: FC<FilterProps> = ({
                 <Icon icon='mdi:man-child' color='#62add9' fontSize={32} />
                 <p>Age:</p>
               </div>
-              <input min={12} max={99} className='px-2 w-[3.4em] input' value={ageFilter} placeholder='Age' onChange={(e) => setAgeFilter(e.target.value)} />
+              <input
+                min={12}
+                max={99}
+                className='px-2 w-[3.4em] input'
+                value={ageFilter}
+                placeholder='Age'
+                onChange={(e) => setAgeFilter(e.target.value)}
+              />
             </div>
             <input className='w-[20em]' type='range' min={12} max={99} value={ageFilter} onChange={(e) => setAgeFilter(e.target.value)} />
           </div>
