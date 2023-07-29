@@ -11,17 +11,17 @@ const regex = /^(?:[a-zA-Z0-9]{1,7}(?:,|$)){1,3}$/
 
 export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement => {
   const [state, dispatch] = useReducer(formReducer, initialState)
+  const requestBody = {
+    age: state.age,
+    tags: state.tags,
+    gender: state.gender,
+    secret: state.secret,
+    likes: state.likes,
+    dislikes: state.dislikes,
+  }
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const requestBody = {
-      age: state.age,
-      tags: state.tags,
-      gender: state.gender,
-      secret: state.secret,
-      likes: state.likes,
-      dislikes: state.dislikes,
-    }
     try {
       await fetch(url, {
         method: 'POST',
@@ -42,7 +42,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
     <section className='h-screen w-full absolute bg-[#0B090Aba] backdrop-blur-2 top-0 flex justify-center items-center'>
       <form
         onSubmit={handleSubmit}
-        className='w-xl bg-[#0B090A] h-[21.4em] rounded-xl text-[#F5F3F4] p-5'
+        className='w-xl bg-[#0B090A] h-[22.4em] rounded-xl text-[#F5F3F4] p-5'
       >
         <div className='flex pb-2 justify-between items-center pr-2 border-1 border-b-[#F5F3F4] border-b-solid'>
           <p className='text-3xl'>What secret would you tell us? 💡</p>
@@ -72,7 +72,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
           <select
             required
             className='input'
-            onChange={(e) => dispatch({ type: 'setField', field: 'gender', value: e.target.value })}
+            onChange={(e) => dispatch({ type: 'setField', field: 'gender', value: e.target.value.toString() })}
           >
             <option defaultValue='gender' className='hidden'>
               gender
@@ -83,7 +83,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
         </div>
         <textarea
           required
-          onChange={(e) => dispatch({ type: 'setField', field: 'secret', value: e.target.value })}
+          onChange={(e) => dispatch({ type: 'setField', field: 'secret', value: e.target.value.toString() })}
           maxLength={420}
           className='w-full h-[10rem] text-[18px] rounded-xl border-none mt-5 bg-[#181818] text-[#F5F3F4] px-2 py-1 resize-none'
         />
