@@ -7,8 +7,8 @@ import { Card } from './Card'
 import { Loader } from './Loader'
 
 interface SecretsContainerProps {
-  tagFilter: string[]
-  ageFilter: string
+  tagFilter: string
+  ageFilter: number | string
 }
 
 export const SecretsContainer: FC<SecretsContainerProps> = ({

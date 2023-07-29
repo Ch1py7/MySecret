@@ -7,8 +7,8 @@ import { FC, ReactElement, useState } from 'react'
 export const App: FC = (): ReactElement => {
   const [secretWindow, setSecretWindow] = useState<boolean>(false)
   const [filters, setFilters] = useState<boolean>(false)
-  const [tagFilter, setTagFilter] = useState<string[]>([])
-  const [ageFilter, setAgeFilter] = useState<string>('')
+  const [tagFilter, setTagFilter] = useState<string>('')
+  const [ageFilter, setAgeFilter] = useState<number | string>('')
 
   return (
     <div>
@@ -19,8 +19,6 @@ export const App: FC = (): ReactElement => {
           setFilters={setFilters}
           setTagFilter={setTagFilter}
           setAgeFilter={setAgeFilter}
-          tagFilter={tagFilter}
-          ageFilter={ageFilter}
         />}
       {secretWindow && <NewSecret setSecretWindow={setSecretWindow} />}
     </div>
