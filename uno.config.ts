@@ -4,7 +4,7 @@ import { defineConfig, presetUno } from 'unocss'
 export default defineConfig({
   presets: [presetUno()],
   shortcuts: {
-    'input': 'h-[1.4em] rounded-md border-none px-1 bg-[#333333] text-[#F5F3F4]'
+    'input': 'h-[2em] rounded-md border-none px-2 bg-[#333333] text-[#F5F3F4]'
   },
   theme: {
     animation: {
@@ -23,15 +23,3 @@ export default defineConfig({
     }
   }
 })
-
-
-/**
- * 20% {
-    background-color: #ffff;
-    transform: scaleY(1.5);
-  }
-
-  40% {
-    transform: scaleY(1);
-  }
- */

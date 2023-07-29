@@ -7,7 +7,7 @@ import { Card } from './Card'
 import { Loader } from './Loader'
 
 interface SecretsContainerProps {
-  tagFilter: string
+  tagFilter: string[]
   ageFilter: string
 }
 
