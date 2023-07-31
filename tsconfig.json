@@ -13,6 +13,7 @@
       "@api": ["/api/*", "/api"],
       "@pages": ["/pages/*", "/pages"],
       "@config": ["/config/*", "/config"],
+      "@domain": ["/domain/*", "/domain"],
     },
     "target": "ES2020",
     "useDefineForClassFields": true,

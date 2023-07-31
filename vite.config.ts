@@ -20,6 +20,7 @@ export default defineConfig({
       api: path.resolve(__dirname, './src/api'),
       pages: path.resolve(__dirname, './src/pages'),
       config: path.resolve(__dirname, './src/config'),
+      domain: path.resolve(__dirname, './src/domain'),
     },
   },
   plugins: [react(), UnoCSS()],
