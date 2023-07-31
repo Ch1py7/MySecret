@@ -46,16 +46,16 @@ export const Card: FC<CardProps> = ({ secret, likeFn, dislikeFn, loader }): Reac
               onClick={handleLikeClick}
               className='flex bg-transparent border-none flex justify-center items-center'
             >
-              <Icon icon='ri:emotion-happy-line' className='text-6 text-black' />
+              <Icon icon='ri:emotion-happy-line' color={`${localStorage.getItem(`like-${_id}`) ? 'black' : '#ffffff' }`} className='text-6 text-black duration-300' />
             </button>
             <button
               disabled={loader}
               onClick={handleDislikeClick}
               className='flex gap-2 bg-transparent border-none flex justify-center items-center'
             >
-              <Icon icon='ri:emotion-sad-line' className='text-6 text-black' />
+              <Icon icon='ri:emotion-sad-line' color={`${localStorage.getItem(`dislike-${_id}`) ? 'black' : '#ffffff' }`} className='text-6 text-black duration-300' />
             </button>
-            <p className='text-black text-center'>{count}</p>
+            <p className='text-black text-center w-[1em]'>{count}</p>
           </div>
         </div>
         <p className='pl-8 pr-16'>{secretText}</p>

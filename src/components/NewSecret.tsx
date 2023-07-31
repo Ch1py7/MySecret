@@ -86,7 +86,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
             <input
               maxLength={7}
               className='bg-[#181818] text-[#F5F3F4] px-4 rounded-1 border-none w-70 py-2'
-              placeholder='tag'
+              placeholder='tag (max 7 chars and 3 tags)'
               value={tags}
               onChange={(e) => {
                 setTags(e.target.value)
