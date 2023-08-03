@@ -26,11 +26,11 @@ export const Card: FC<CardProps> = ({ secret, likeFn }): ReactElement => {
   return (
     <article
       className={`flex flex-col rounded-3 w-2xl ${
-        gender === 'man' ? 'border-[#3C8CD4] border-1 border-solid' : 'border-[#f2508f] border-1 border-solid'
+        gender === 'man' ? 'border-[#3C8CD4] border-1 border-solid' : gender === 'woman' ? 'border-[#f2508f] border-1 border-solid' : 'border-[#707070] border-1 border-solid'
       } m-auto my-10`}
     >
       <header className={`flex justify-between items-center px-10 ${
-        gender === 'man' ? 'bg-[#3C8CD4]' : 'bg-[#f2508f]'
+        gender === 'man' ? 'bg-[#3C8CD4]' : gender === 'woman' ? 'bg-[#f2508f]' : 'bg-[#b8b8b8]'
       } h-[4em] rounded-rt-2 rounded-lt-2`}>
         <div>
           <h2 className='text-3xl'>{anonName ? anonName : 'Anonymous'}</h2>
