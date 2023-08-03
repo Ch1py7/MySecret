@@ -72,6 +72,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
             </option>
             <option value='man'>man</option>
             <option value='woman'>woman</option>
+            <option value='other'>other</option>
           </select>
         </div>
         <div className='flex flex-col gap-5'>
