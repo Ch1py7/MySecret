@@ -3,8 +3,7 @@ export interface Secrets {
   gender: string
   age: number
   secret: string
-  tags: string[]
+  anonName: string
   country: string
-  dislikes: number
   likes: number
 }

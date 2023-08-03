@@ -2,9 +2,8 @@ export type Gender = 'man' | 'woman'
 
 export interface SecretEntity {
   age: number,
-  tags: string[],
   gender: Gender,
   secret: string,
+  anonName: string
   likes: number,
-  dislikes: number,
 }

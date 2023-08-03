@@ -1,78 +1,53 @@
 import { Icon } from '@iconify/react'
-import { FC, ReactElement, useCallback, useMemo } from 'react'
+import { FC, ReactElement, useCallback, useMemo, useState } from 'react'
 import { Secrets } from 'types/secrets'
 
 interface CardProps {
   secret: Secrets
   likeFn: (id: string, secret: Secrets) => Promise<void>
-  dislikeFn: (id: string, secret: Secrets) => Promise<void>
-  loader: boolean
 }
 
-export const Card: FC<CardProps> = ({ secret, likeFn, dislikeFn, loader }): ReactElement => {
-  const { _id, age, tags, likes, dislikes, gender, secret: secretText, country } = secret
-  const count = useMemo(() => likes + dislikes, [likes, dislikes])
+export const Card: FC<CardProps> = ({ secret, likeFn }): ReactElement => {
+  const { _id, age, likes, gender, secret: secretText, anonName } = secret
+  const count = useMemo(() => likes, [likes])
+  const [loader, setLoader] = useState<boolean>(false)
 
   const handleLikeClick = useCallback(async () => {
-    await likeFn(_id, secret)
+    try {
+      setLoader(true)
+      await likeFn(_id, secret)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setLoader(false)
+    }
   }, [likeFn])
-
-  const handleDislikeClick = useCallback(async () => {
-    await dislikeFn(_id, secret)
-  }, [dislikeFn])
 
   return (
     <article
-      className={`flex flex-col gap-4 rounded-3 py-4 w-2xl ${
-        gender === 'man' ? 'bg-[#3C8CD4]' : 'bg-[#f2508f]'
-      } m-auto text-black relative mb-8`}
+      className={`flex flex-col rounded-3 w-2xl ${
+        gender === 'man' ? 'border-[#3C8CD4] border-1 border-solid' : 'border-[#f2508f] border-1 border-solid'
+      } m-auto my-10`}
     >
-      <div className='flex flex-col gap-3'>
-        <div className='flex justify-between border-b-solid pb-2 pl-8 pr-16 border-b-black border-b-1'>
-          <div className='flex justify-start items-center'>
-            {gender === 'man' ? (
-              <Icon icon='material-symbols:man' className='text-5 text-black' />
-            ) : (
-              <Icon icon='material-symbols:woman' className='text-5 text-black' />
-            )}
-            <p>
-              <span className='font-600'>{age}</span> years
-            </p>
-          </div>
-          <p>#{_id}</p>
-          <div className='flex gap-2'>
-            <button
-              disabled={loader}
-              onClick={handleLikeClick}
-              className='flex bg-transparent border-none flex justify-center items-center'
-            >
-              <Icon icon='ri:emotion-happy-line' color={`${localStorage.getItem(`like-${_id}`) ? 'black' : '#ffffff' }`} className='text-6 text-black duration-300' />
-            </button>
-            <button
-              disabled={loader}
-              onClick={handleDislikeClick}
-              className='flex gap-2 bg-transparent border-none flex justify-center items-center'
-            >
-              <Icon icon='ri:emotion-sad-line' color={`${localStorage.getItem(`dislike-${_id}`) ? 'black' : '#ffffff' }`} className='text-6 text-black duration-300' />
-            </button>
-            <p className='text-black text-center w-[1em]'>{count}</p>
-          </div>
+      <header className={`flex justify-between items-center px-10 ${
+        gender === 'man' ? 'bg-[#3C8CD4]' : 'bg-[#f2508f]'
+      } h-[4em] rounded-rt-2 rounded-lt-2`}>
+        <div>
+          <h2 className='text-3xl'>{anonName ? anonName : 'Anonymous'}</h2>
+          <p className='text-[12px] font-bold'>{age} years</p>
         </div>
-        <p className='pl-8 pr-16'>{secretText}</p>
-        <div className='flex justify-between items-center pl-8 pr-16'>
-          <ul className='flex gap-4'>
-            {tags.map((tag, index) => (
-              <li
-                key={index}
-                className='border-black border-solid border-1 px-6 py-1 rounded-full duration-200 hover:bg-[#effbf3] hover:text-black'
-              >
-                {tag}
-              </li>
-            ))}
-          </ul>
-          <Icon icon={`emojione:flag-for-${country}`} className='text-8' />
+        <div className='flex justify-center items-center gap-2'>
+          <button disabled={loader} onClick={handleLikeClick} className='flex items-center bg-transparent border-none'>
+            <Icon icon={localStorage.getItem(`like-${_id}`) ? 'system-uicons:face-happy' : 'system-uicons:face-neutral' } fontSize={32} />
+          </button>
+          <p className='w-[2em] text-center'>
+            {count}
+          </p>
         </div>
-      </div>
+      </header>
+      <section className='min-h-[2em] px-10 py-6'>
+        <p className='text-xl text-[#F5F3F4]'>{secretText}</p>
+      </section>
     </article>
   )
 }
