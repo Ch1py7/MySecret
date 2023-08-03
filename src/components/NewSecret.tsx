@@ -91,11 +91,9 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
             <input
               required
               className='input px-5 w-[15em] text-[1em]'
-              max={99}
-              min={12}
-              type='number'
+              type='text'
               placeholder='anonymous name (optional)'
-              onChange={(e) => setData((prev) => ({ ...prev, age: Number(e.target.value)}))}
+              onChange={(e) => setData((prev) => ({ ...prev, anonName: e.target.value}))}
             />
           </div>
         </div>
