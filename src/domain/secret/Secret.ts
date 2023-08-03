@@ -48,7 +48,7 @@ export class Secret implements SecretEntity {
   }
 
   private _assertGender(gender: Gender) {
-    if (gender !== 'man' && gender !== 'woman') {
+    if (gender !== 'man' && gender !== 'woman' && gender !== 'other') {
       throw new InvalidSecretError(InvalidSecretMessages.INVALID_GENDER)
     }
   }
