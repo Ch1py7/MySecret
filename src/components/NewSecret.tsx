@@ -65,7 +65,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
           <select
             required
             className='input text-[1em]'
-            onChange={(e) => setData((prev) => ({ ...prev, gender: e.target.value === 'man' ? 'man' : 'woman'}))}
+            onChange={(e) => setData((prev) => ({ ...prev, gender: e.target.value === 'man' ? 'man' : e.target.value === 'woman' ? 'woman' : 'other' }))}
           >
             <option defaultValue='gender' className='hidden'>
               gender
@@ -90,7 +90,6 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
               <Icon icon='tabler:send' fontSize={24} />
             </button>
             <input
-              required
               className='input px-5 w-[15em] text-[1em]'
               type='text'
               placeholder='anonymous name (optional)'

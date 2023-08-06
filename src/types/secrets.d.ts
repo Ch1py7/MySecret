@@ -1,6 +1,8 @@
+import { Gender } from 'domain/types/Secret'
+
 export interface Secrets {
   _id: string
-  gender: string
+  gender: Gender
   age: number
   secret: string
   anonName: string
