@@ -80,7 +80,7 @@ export class Secret implements SecretEntity {
   }
 
   private _assertSecret(secret: string) {
-    if (typeof secret !== 'string' || secret.length > 420 || !/^[a-zA-Z0-9\s]+$/.test(secret)) {
+    if (typeof secret !== 'string' || secret.length > 420 || !/^[a-zA-Z0-9\s!¡?¿,.:'"¡"'.\sáéíóúÁÉÍÓÚñÑ]+$/.test(secret)) {
       throw new InvalidSecretError(InvalidSecretMessages.INVALID_SECRET)
     }
   }
