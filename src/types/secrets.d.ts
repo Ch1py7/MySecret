@@ -1,4 +1,4 @@
-import { Gender } from 'domain/types/Secret'
+
 
 export interface Secrets {
   _id: string

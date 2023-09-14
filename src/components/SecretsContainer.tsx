@@ -65,6 +65,7 @@ export const SecretsContainer: FC = (): ReactElement => {
               className='flex justify-center items-center h-[3em] w-[12em] border-none bg-[#f2508f] rounded-md'
               onClick={handlePrev}
               disabled={current === 1}
+              disabled={current === 1}
             >
               <Icon icon='ep:arrow-left-bold' fontSize={24} />
             </button>
