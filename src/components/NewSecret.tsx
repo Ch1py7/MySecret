@@ -7,7 +7,7 @@ interface NewSecretProps {
   setSecretWindow: Dispatch<SetStateAction<boolean>>
 }
 
-const url = `${import.meta.env.VITE_API_URL}api/insert`
+const url = `${import.meta.env.VITE_API_URL}api/v1/secret/insert`
 
 export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement => {
   const [data, setData] = useState<SecretEntity>({ age: 0, anonName: '', likes: 0, secret: '', gender: 'man' })
@@ -32,7 +32,7 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
   }, [data])
 
   return (
-    <section className='h-screen w-full absolute bg-[#0B090Aba] backdrop-blur-2 top-0 flex justify-center items-center'>
+    <section className='h-screen w-full fixed bg-[#0B090Aba] backdrop-blur-2 top-0 flex justify-center items-center'>
       <form
         onSubmit={handleSubmit}
         className='w-2xl bg-[#0B090A] h-[31em] rounded-xl text-[#F5F3F4] p-10 flex flex-col gap-5'
@@ -89,7 +89,6 @@ export const NewSecret: FC<NewSecretProps> = ({ setSecretWindow }): ReactElement
               <Icon icon='tabler:send' fontSize={24} />
             </button>
             <input
-              required
               className='input px-5 w-[15em] text-[1em]'
               type='text'
               placeholder='anonymous name (optional)'

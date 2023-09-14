@@ -1,6 +1,6 @@
 import { Secrets } from 'types/secrets'
 
-const urllikes = `${import.meta.env.VITE_API_URL}api/updatelikes`
+const urllikes = `${import.meta.env.VITE_API_URL}api/v1/secret/updateLike`
 
 export module secretsService {
   // TODO: Refactor this code to use a single function for like and dislike
